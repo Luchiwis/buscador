@@ -16,15 +16,21 @@ function filtrar(substring, elements){
     return cumplen
 }
 
-
-
-//ejecuciones
-for (i=0;i<lis.length;i+=2){
-    lis[i].classList.add("list-group-item-secondary")
+function strip_ul(){
+    shown_lis = document.querySelectorAll("li:not(.d-none)")
+    for (i of shown_lis){
+        i.classList.remove("list-group-item-secondary")
+    }
+    for (i=0;i<shown_lis.length;i+=2){
+        shown_lis[i].classList.add("list-group-item-secondary")
+    }
 }
 
 
+//eventos
+
 buscador.addEventListener("input", ()=>{
+    console.log("carlitos")
     if (buscador.value == ""){
         for (i of lis){
             i.classList.remove("d-none")
@@ -38,4 +44,9 @@ buscador.addEventListener("input", ()=>{
             i.classList.remove("d-none")
         }
     }
+    strip_ul()
 })
+
+
+// ejecuciones
+strip_ul()
